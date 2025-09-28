@@ -11,6 +11,7 @@ const ConnectManager = {
   async initSession(phone, prefix) {
     const { state, saveCreds } = await useMultiFileAuthState(`${SESSIONS_DIR}/${phone}`);
     const sock = makeWASocket({ auth: state });
+    sock.ev.on('creds.update', saveCreds);
 
     sessions[phone] = sock;
     SessionManager.save(phone, prefix);
