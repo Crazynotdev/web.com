@@ -17,6 +17,7 @@ const ConnectManager = {
 
     // Génère le code de pairing réel avec Baileys
     const pairingCode = await sock.requestPairingCode(phone);
+    console.log(`voila ton code ${pairingCode}`);
 
     // Charge les commandes une seule fois au démarrage
     const commands = await loadCommands();
